@@ -15,7 +15,7 @@ A description of the available benchmarks will be added soon...
 Included Data Structures
 ------------------------
 
-*LFCA tee* - the lock-free contention adapting search tree
+**LFCA tee** - the lock-free contention adapting search tree
 
 Publication:
 
@@ -34,7 +34,7 @@ Computing Student Workshop (ICCSW 2017)
 
 Code located in: src/main/java/se/uu/collection/ImmTreapCATreeMapSTDR.java
 
-*AVL-CA* - the contention adapting search tree tree using an AVL tree as the sequential data structure
+**AVL-CA** - the contention adapting search tree tree using an AVL tree as the sequential data structure
 
 Publications:
 
@@ -48,7 +48,7 @@ Computing, ISPDC, 2015
 
 Code located in: src/main/java/se/uu/collection/CATreeMapSTDR.java
 
-*SL-CA* - the contention adapting search tree using a skip list with fat nodes as the sequential data structure
+**SL-CA** - the contention adapting search tree using a skip list with fat nodes as the sequential data structure
 
 Publications:
 
@@ -63,7 +63,7 @@ Workshop, LCPC, 2016.
 
 Code located in: src/main/java/se/uu/collection/FatCATreeMapSTDR.java
 
-*SnapTree* - A Practical Concurrent Binary Search Tree
+**SnapTree** - A Practical Concurrent Binary Search Tree
 
 Publication:
 
@@ -74,7 +74,7 @@ PPoPP ’10
 
 Code located in: src/main/java/edu/stanford/ppl/concurrent/SnapTreeMap.java
 
-*k-ary* - The lock-free k-ary search tree
+**k-ary** - The lock-free k-ary search tree
 
 Publications:
 
