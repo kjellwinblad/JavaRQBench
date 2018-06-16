@@ -24,7 +24,7 @@ contention adapting search trees. In Proceedings of the 30th ACM
 Symposium on Parallelism in Algorithms and Architectures, SPAA ’18,
 2018. To appear.
 
-*Im-Tr-CA* - the contention adapting search tree with an optimization enabled by an immutable treap
+**Im-Tr-CA** - the contention adapting search tree with an optimization enabled by an immutable treap
 
 Publication:
 
