@@ -29,7 +29,7 @@ Benchmarks
 
 The folder `benchmark_tools` contains scripts for running three types
 of benchmarks that are briefly described below. A detailed description
-of these benchmarks can be found in the [lFCA tree paper][1]
+of these benchmarks can be found in the [LFCA tree paper][1]
 ([preprint][2]). All these benchmarks are configured by modifying the
 benchmark scripts.
 
