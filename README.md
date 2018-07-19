@@ -5,15 +5,66 @@ This repository contains code for benchmarking and testing Java
 implementations of concurrent maps with support for range queries and
 state-of-the-art implementations of such maps.
 
+Compile and Test
+----------------
+
+**Requirements**
+
+* The [sbt](http://www.scala-sbt.org/) build tool
+* [JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) or greater
+* [python3](https://www.python.org/) (Needed to run benchmarks)
+* [matplotlib](https://matplotlib.org/)
+
+**Compilation**
+
+When the requirements are installed the following command can be used
+to compile everything and run the tests (the tests can take a few
+minutes to complete depending on the system):
+
+`sbt test`
+
+
 Benchmarks
 ----------
 
-*Work in progress*
+The folder `benchmark_tools` contains scripts for running three types
+of benchmarks that are briefly described below. A detailed description
+of these benchmarks can be found in the [lFCA tree paper][1]
+([preprint][2]). All these benchmarks are configured by modifying the
+benchmark scripts.
 
-A description of the available benchmarks will be added soon...
+[//]: # (The benchmark scripts outputs files containing the measurements from the benchmarks.)
 
-Included Data Structures
-------------------------
+**TODO: add scripts to produce graphs and describe the benchmarks better**
+[//]: # (There are also scripts in the `benchmark_tools` folder that can be used to produce graphs from these data files.)
+
+## Mixed Operations
+
+In the mixed operations benchmark a configurable number of threads
+perform a configurable mix of operations.
+
+**Configuration**
+
+The benchmark can be configured by modifying
+`benchmark_tools/mix_ops_bench.py`
+
+**Running the benchmark**
+
+**TODO: describe how to run the benchmark**
+
+
+## Separate Threads For Updates and Range Queries
+
+**TODO: Document this benchmark**
+
+## Time Series Benchmark for the LFCA tree
+
+**TODO: Document this benchmark**
+
+Data Structures
+---------------
+This repository contains the following data structures.
+
 
 **LFCA tee** - the lock-free contention adapting search tree
 
@@ -94,3 +145,5 @@ License
 GNU General Public License (GPL) Version 3
 
 
+[1]: https://doi.org/10.1145/3210377.3210413
+[2]: http://www.it.uu.se/research/group/languages/software/ca_tree/spaa2018lfcatree.pdf
