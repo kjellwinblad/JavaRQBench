@@ -36,7 +36,8 @@ benchmark scripts.
 [//]: # (The benchmark scripts outputs files containing the measurements from the benchmarks.)
 
 **TODO: add scripts to produce graphs and describe the benchmarks better**
-[//]: # (There are also scripts in the `benchmark_tools` folder that can be used to produce graphs from these data files.)
+
+[//]: # (There are also scripts in the benchmark_tools folder that can be used to produce graphs from these data files.)
 
 ## Mixed Operations
 
@@ -73,7 +74,7 @@ Publication:
 Kjell Winblad, Konstantinos Sagonas, and Bengt Jonsson. Lock-free
 contention adapting search trees. In Proceedings of the 30th ACM
 Symposium on Parallelism in Algorithms and Architectures, SPAA ’18,
-2018. To appear.
+2018.
 
 **Im-Tr-CA** - the contention adapting search tree with an optimization enabled by an immutable treap
 
