@@ -1,19 +1,16 @@
 import sys
 import subprocess
-THREAD_COUNTS=[32] #,62
+THREAD_COUNTS=[32]
 SETTINGS=[[2],[4],[8],[32],[128],[512], [2000], [8000],[32000],[128000]]
 post_fix = sys.argv[1]
 data_structure = sys.argv[2]
 PINNING="no"
-
 NR_OF_WARM_UP_RUNS="3"
 WARM_UP_TIME_SECONDS="10"
 NR_OF_MEASURMENT_RUNS="3"
 MEASURMENT_TIME_SECONDS="10"
-REPORT_TYPE='ALL'#AVERAGE_THROUGHPUT
+REPORT_TYPE='ALL'
 set_size=sys.argv[3]
-
-#se.uu.collection.ImmTreapCATreeMapSTDR 63 1 10 5 100 ALL 1000000 500000  0.8 0.1 1 0 0 0
 
 for thread_count in THREAD_COUNTS:
     output_file_name = PINNING + "@threads" + str(thread_count)+ "_" + set_size +"_"  + data_structure + "_" + post_fix

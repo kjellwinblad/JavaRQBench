@@ -13,7 +13,7 @@ Compile and Test
 * The [sbt](http://www.scala-sbt.org/) build tool
 * [JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) or greater
 * [python3](https://www.python.org/) (Needed to run benchmarks)
-* [matplotlib](https://matplotlib.org/)
+* [matplotlib](https://matplotlib.org/) (Needed to plot benchmark results)
 
 **Compilation**
 
@@ -30,37 +30,33 @@ Benchmarks
 The folder `benchmark_tools` contains scripts for running three types
 of benchmarks that are briefly described below. A detailed description
 of these benchmarks can be found in the [LFCA tree paper][1]
-([preprint][2]). All these benchmarks are configured by modifying the
-benchmark scripts.
-
-[//]: # (The benchmark scripts outputs files containing the measurements from the benchmarks.)
-
-**TODO: add scripts to produce graphs and describe the benchmarks better**
-
-[//]: # (There are also scripts in the benchmark_tools folder that can be used to produce graphs from these data files.)
+([preprint][2]).
 
 ## Mixed Operations
 
 In the mixed operations benchmark a configurable number of threads
 perform a configurable mix of operations.
 
-**Configuration**
-
-The benchmark can be configured by modifying
-`benchmark_tools/mix_ops_bench.py`
-
-**Running the benchmark**
-
-**TODO: describe how to run the benchmark**
-
+More information about this benchmark can be found in
+[benchmark_tools/MIX_OPS_BENCH_README.md][3].
 
 ## Separate Threads For Updates and Range Queries
 
-**TODO: Document this benchmark**
+In this benchmark half of the threads do update operations
+(put and remove) while the other half only do range queries.
 
-## Time Series Benchmark for the LFCA tree
+More information about this benchmark can be found in   
+[benchmark_tools/SEP_THREADS_BENCH_README.md][4].
 
-**TODO: Document this benchmark**
+## Time Series Benchmark For the LFCA Tree
+
+Currently, this benchmark can only be used for the LFCA tree. The
+intention of this benchmark is to produce a time series showing how
+the number of route nodes and the throughput of an LFCA tree changes
+when the workload changes.
+
+More information about this benchmark can be found in   
+[benchmark_tools/TIME_SERIES.md][5].
 
 Data Structures
 ---------------
@@ -148,3 +144,6 @@ GNU General Public License (GPL) Version 3
 
 [1]: https://doi.org/10.1145/3210377.3210413
 [2]: http://www.it.uu.se/research/group/languages/software/ca_tree/spaa2018lfcatree.pdf
+[3]: benchmark_tools/MIX_OPS_BENCH_README.md
+[4]: benchmark_tools/SEP_THREADS_BENCH_README.md
+[5]: benchmark_tools/TIME_SERIES_README.md
