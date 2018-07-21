@@ -13,8 +13,10 @@ modifing:
 Running the Benchmark
 =====================
 
-    cd benchmark_tools
-    ./all_ds_mix_ops_bench.sh 1 1000000
+```
+cd benchmark_tools
+./all_ds_mix_ops_bench.sh 1 1000000
+```
 
 The fist parameter to `all_ds_mix_ops_bench.sh` is a suffix that will
 be appended to the names of the output files.
@@ -22,5 +24,7 @@ be appended to the names of the output files.
 Producing Graphs From the Result Files
 ======================================
 
-   cd benchmark_tools
-   python3 plot_mix_ops_bench.py
+```
+cd benchmark_tools
+python3 plot_mix_ops_bench.py
+```

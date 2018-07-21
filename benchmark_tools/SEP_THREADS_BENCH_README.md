@@ -25,17 +25,20 @@ modifying:
 
 ### Running the Benchmark
 
-    cd benchmark_tools
-    ./all_ds_bench_separate_update_and_range_queries_vary_range_size.sh 1 1000000
+```
+cd benchmark_tools
+./all_ds_bench_separate_update_and_range_queries_vary_range_size.sh 1 1000000
+```
 
 The fist parameter is a suffix that will be appended to the names of
 the output files. The second parameter is the size of the item range.
 
 ### Producing Graphs From the Result Files
 
-   cd benchmark_tools
-   python3 plot_sep_threads_vary_range_size.py
-
+```
+cd benchmark_tools
+python3 plot_sep_threads_vary_range_size.py
+```
 
 Vary Thread Count
 -----------------
@@ -51,15 +54,18 @@ modifying:
 
 ### Running the Benchmark
 
-    cd benchmark_tools
-    ./all_ds_bench_separate_update_and_range_queries_vary_thread_count.sh 1 1000000
+```
+cd benchmark_tools
+./all_ds_bench_separate_update_and_range_queries_vary_thread_count.sh 1 1000000
+```
 
 The fist parameter is a suffix that will be appended to the names of
 the output files. The second parameter is the size of the item range.
 
 ### Producing Graphs From the Result Files
 
-   cd benchmark_tools
-   python3 plot_sep_threads_vary_thread_count.py
-
+```
+cd benchmark_tools
+python3 plot_sep_threads_vary_thread_count.py
+```
 
