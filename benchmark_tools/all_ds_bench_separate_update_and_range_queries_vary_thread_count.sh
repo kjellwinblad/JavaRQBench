@@ -8,5 +8,5 @@ DATASTRUCTURES="se.uu.collection.LockFreeImmTreapCATreeMapSTDR se.uu.collection.
 
 for DATASTRUCTURE in $DATASTRUCTURES
 do
-    python3 bench_separate_update_and_range_queries_vary_range_size.py $1 $DATASTRUCTURE $SIZE
+    python3 bench_separate_update_and_range_queries_vary_thread_count.py $1 $DATASTRUCTURE $SIZE
 done
