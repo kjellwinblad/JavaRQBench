@@ -115,7 +115,7 @@ def draw_graph(out_file,
 #no@3@10@3@10@ALL@1000000@500000@32000_algorithms.published.LockFreeKSTRQ_1
 #plot different range size graphs
 for range_query_max_size in [32000]:#2,4,8,32,128,512,2000,8000,,128000
-    for set_size in [100000,1000000,10000000]:#, ("orkut", 3072442)
+    for set_size in [1000000]:
         showLegend=True
         table_types_and_names = [
                                  #("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_" + "se.uu.collection.KiWiRangeQueryMap", "KiWi", 'o', '#C96565'),
