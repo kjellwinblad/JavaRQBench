@@ -25,6 +25,7 @@ public class LockFreeImmTreapCATreeMapSTDR<K, V> extends AbstractMap<K, V>
 	// ====== FOR DEBUGING ======
 	@SuppressWarnings("unused")
 	private final static boolean DEBUG = false;
+	private final static boolean PROFILE = false;
 	// ==========================
 
 	@SuppressWarnings("unchecked")
@@ -254,7 +255,7 @@ public class LockFreeImmTreapCATreeMapSTDR<K, V> extends AbstractMap<K, V>
 			}
 		}
 		if(splitSuccess) {
-			threadLocalBuffers.get().increaseNrOfSplits();
+                     if(PROFILE) threadLocalBuffers.get().increaseNrOfSplits();
                 }else{
 		    //System.err.println("SPLIT FAILURE\n");
                 }
@@ -374,7 +375,7 @@ public class LockFreeImmTreapCATreeMapSTDR<K, V> extends AbstractMap<K, V>
 					if (successLinkInNewNeighbor) {
 						if (lockParentAndGrandParent(newTempBase, newTempNeighborBase)) {
 							completeJoin(newTempBase);
-							threadLocalBuffers.get().increaseNrOfJoins();							
+							if(PROFILE) threadLocalBuffers.get().increaseNrOfJoins();							
 						}
 					}
 				}
@@ -400,7 +401,7 @@ public class LockFreeImmTreapCATreeMapSTDR<K, V> extends AbstractMap<K, V>
 					if (successLinkInNewNeighbor) {//ff
 						if (lockParentAndGrandParent(newTempBase, newTempNeighborBase)) {//ff
 							completeJoin(newTempBase);//ff
-							threadLocalBuffers.get().increaseNrOfJoins();//ff
+							if(PROFILE)threadLocalBuffers.get().increaseNrOfJoins();//ff
 						}//ff
 					}//ff
 				}
