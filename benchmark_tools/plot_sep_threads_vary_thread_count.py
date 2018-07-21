@@ -117,13 +117,14 @@ def draw_graph(out_file,
 for range_query_max_size in [32000]:#2,4,8,32,128,512,2000,8000,,128000
     for set_size in [100000,1000000,10000000]:#, ("orkut", 3072442)
         showLegend=True
-        table_types_and_names = [("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_" + "se.uu.collection.KiWiRangeQueryMap", "KiWi", 'o', '#C96565'),
+        table_types_and_names = [
+                                 #("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_" + "se.uu.collection.KiWiRangeQueryMap", "KiWi", 'o', '#C96565'),
                                  ("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_" + "algorithms.published.LockFreeKSTRQ", "k-ary", 'd', '#00BD06'),
                                  ("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_" + "se.uu.collection.RangeUpdateSnapTree", "SnapTree", '*', '#377339'),
-                                 ("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_" + "se.uu.collection.LockFreeRangeCollectorSkipList", "ChatterjeeSL", '+', '#d67724'),
+                                 #("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_" + "se.uu.collection.LockFreeRangeCollectorSkipList", "ChatterjeeSL", '+', '#d67724'),
                                  ("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_" + "se.uu.collection.NonAtomicRangeUpdateConcurrentSkipListMap", "NonAtomicSL", 'p', '#B971D1'),
                                  ("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_" + "se.uu.collection.ImmTreapCoarseMap", "Im-Tr-Coarse", 'x', '#B0B0B0'),
-                                 ("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_" + "se.uu.collection.ImmTreapCATreeMapSTDR", "CA tree (locks)", '<', '#666699'),
+                                 ("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_" + "se.uu.collection.ImmTreapCATreeMapSTDR", "CA tree (Locks)", '<', '#666699'),
                                  ("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_" + "se.uu.collection.LockFreeImmTreapCATreeMapSTDR", "LFCA tree", '*', '#000000')
         ]
         yaxis_max = 0
