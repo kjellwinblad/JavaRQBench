@@ -173,7 +173,8 @@ def draw_graph(out_file,
                  1, label, marker, color, filter_points=[15,24,48,63,80,100],append_to_column=append_to_column, divide_by_number_of_queries=divide_by_number_of_queries,divide_by_number_of_milliseconds=divide_by_number_of_milliseconds,roundup=roundup,only_this_timeperiod=only_this_timeperiod,divide_by_number_of_microseconds=divide_by_number_of_microseconds,xmax=xmax,addtotime=addtotime,ax=ax,secondrun=secondrun)
     if yaxis_max != 0:
         if ax != None:
-            ax.set_ylim(ymax=yaxis_max)
+            pass
+            #ax.set_ylim(ymax=yaxis_max)
 
 f, axarr = plt.subplots(2, 5)
 

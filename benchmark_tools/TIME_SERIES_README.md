@@ -12,12 +12,15 @@ and
 Running the Benchmark
 =====================
 
-    cd benchmark_tools
-    ./run_all_time_series_experiments.sh
-
+```
+cd benchmark_tools
+./run_all_time_series_experiments.sh
+```
 
 Producing Graphs From the Result Files
 ======================================
 
-   cd benchmark_tools
-   python3 plot_lfcatree_timeseries.py
+```
+cd benchmark_tools
+python3 plot_lfcatree_timeseries.py
+```

@@ -87,24 +87,15 @@ def draw_graph(out_file,
         plotCase(file_prefix,
                  1, label, marker, plt.gca(), color, filter_points=[15,24,48,64], append_to_column = append_to_column, range_size = range_size)
     if legend:
-        # plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc=3,
-        #            ncol=2, mode="expand", borderaxespad=0.)
         plt.legend(loc=0, ncol=1, framealpha=0.5)
-    #plt.tight_layout()
-    #plt.legend(loc=legendLoc)
     if yaxis_max != 0:
         plt.ylim((0,yaxis_max))
-    #plt.xlim((0,66))
-    #plt.xscale('log', basex=2)
-    #plt.xticks(xticks, xticks_labels)
     if base_line != 0:
         ypos=float(number_of_nodes) / (base_line * 1000000)
         plt.plot([0, 64], [ypos, ypos], color='k', linestyle='--')
-    #plt.title(graph_title, fontsize=5.8,fontweight="bold")
     plt.tight_layout()
     if left_adjust != 0:
-        plt.subplots_adjust(left=left_adjust)# ,, bottom=0, right=0, top=0, wspace=0, hspace=0
-    #bbox_inches='tight', pad_inches = 0
+        plt.subplots_adjust(left=left_adjust)
     plt.axvline(x=64,c="gray",ymin=0,ymax=1.0,linewidth=2,zorder=0,clip_on=True,linestyle=':')
     plt.savefig(out_file + '.pdf', bbox_inches='tight', pad_inches = 0)
 
@@ -112,9 +103,9 @@ def draw_graph(out_file,
 
 
 
-#no@3@10@3@10@ALL@1000000@500000@32000_algorithms.published.LockFreeKSTRQ_1
+
 #plot different range size graphs
-for range_query_max_size in [32000]:#2,4,8,32,128,512,2000,8000,,128000
+for range_query_max_size in [32000]:
     for set_size in [1000000]:
         showLegend=True
         table_types_and_names = [
@@ -131,7 +122,7 @@ for range_query_max_size in [32000]:#2,4,8,32,128,512,2000,8000,,128000
         print("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_range")
         draw_graph("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_range",
                    graph_title = "no@3@10@3@10@ALL@1000000@500000@@"+str(range_query_max_size)+"_range",
-                   legend = showLegend,#(weight_range == 0 and graph == "live")
+                   legend = showLegend,
                    yaxis_max = yaxis_max,
                    append_to_column = 1,
                    range_size = range_query_max_size,
@@ -142,7 +133,7 @@ for range_query_max_size in [32000]:#2,4,8,32,128,512,2000,8000,,128000
         showLegend =True
         draw_graph("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_put",
                    graph_title = "no@3@10@3@10@ALL@1000000@500000@@"+str(range_query_max_size)+"_put",
-                   legend = showLegend,#(weight_range == 0 and graph == "live")
+                   legend = showLegend,
                    yaxis_max = yaxis_max,
                    append_to_column = 0,
                    left_adjust = 0,

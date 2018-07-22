@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import re
 import matplotlib
 import sys
@@ -8,17 +9,18 @@ data_files=sys.argv[1:]
 
 matplotlib.rcParams.update({'font.size': 7})
 
+
+
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import sys
 
-xticks = [1,2,4,8,16,32,50,64,70]
+xticks = [1,2,4,8,16,32,64]
 xticks_labels = map(lambda x: str(x), xticks)
 
 measurmentPoints = 3
 
 def readFile(the_file, column=1):
-    print(the_file)
     values = []
     with open(the_file, 'r') as f:
         lines = f.readlines()
@@ -28,7 +30,7 @@ def readFile(the_file, column=1):
             values.append(float(cols[column]))
     return values
 
-def plotCase(file_prefix, column, label, marker, ax, color, filter_points=[], append_to_column = 0, range_size = 0):
+def plotCase(file_prefix, column, label, marker, ax, color, filter_points=[], append_to_column=0):
     suffix = "_1"
     xvals = readFile(file_prefix + suffix, 0)
     x = []
@@ -49,38 +51,38 @@ def plotCase(file_prefix, column, label, marker, ax, color, filter_points=[], ap
         measurments = []
         for i in range(0, measurmentPoints):
             if append_to_column == 1:
-                measurments.append(((float(yvals[i][line]) / float(yvals_time[i][line]))*1000)*range_size)
+                measurments.append(((float(yvals[i][line]) / float(yvals_time[i][line]))*1000)*xvals[line])
             else:
                 measurments.append((float(yvals[i][line]) / float(yvals_time[i][line]))*1000)
         average = (sum(measurments)/measurmentPoints)
         y.append(average)
         y_error_mins.append(average - min(measurments))
         y_error_maxs.append(max(measurments) -average)
-    xticks = [2,4,8,16,32,64,128]
-    xticklabels = ["1","2","4","8","16","32","64"]
+    xticks = [2,4,8,32,128,512,2000,8000,32000,128000]
+    xticklabels = map(lambda x: (str(x) if x < 1000 else str(int(x/1000))+"K"), xticks)
     ax.set_xscale('log', basex=2)
     ax.set_xticks( xticks )
     ax.set_xticklabels( xticklabels )
     return ax.errorbar(x,y,[y_error_mins,y_error_maxs],label=label,linewidth=1, elinewidth=1,marker=marker,color=color)
+
+
 
 def draw_graph(out_file,
                graph_title,
                legend = False,
                yaxis_max = 0,
                base_line = 0,
-               append_to_column = 0,
-               range_size = 0,
+               append_to_column=0,
                left_adjust = 0,
                fig_width = 3.55,
-               xlabel = "",
                ylabel = ""):
     plt.figure(figsize=(fig_width,2.4))
-    plt.xlabel(xlabel)
+    plt.xlabel('Range Size')
     plt.ylabel(ylabel)
     labels = []
     for (file_prefix, label, marker, color) in table_types_and_names:
         plotCase(file_prefix,
-                 1, label, marker, plt.gca(), color, filter_points=[15,24,48,64], append_to_column = append_to_column, range_size = range_size)
+                 1, label, marker, plt.gca(), color, filter_points=[],append_to_column=append_to_column)
     if legend:
         plt.legend(loc=0, ncol=1, framealpha=0.5)
     if yaxis_max != 0:
@@ -91,46 +93,40 @@ def draw_graph(out_file,
     plt.tight_layout()
     if left_adjust != 0:
         plt.subplots_adjust(left=left_adjust)
-    plt.axvline(x=64,c="gray",ymin=0,ymax=1.0,linewidth=2,zorder=0,clip_on=True,linestyle=':')
     plt.savefig(out_file + '.pdf', bbox_inches='tight', pad_inches = 0)
 
 
 
 
 
+#
 #plot different range size graphs
-for range_query_max_size in [32000]:
-    for set_size in [1000000]:
-        showLegend=True
+for set_size in [1000000]:
+    for nr_of_threads in [32]:
         table_types_and_names = [
-                                 #("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_" + "se.uu.collection.KiWiRangeQueryMap", "KiWi", 'o', '#C96565'),
-                                 ("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_" + "algorithms.published.LockFreeKSTRQ", "k-ary", 'd', '#00BD06'),
-                                 ("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_" + "se.uu.collection.RangeUpdateSnapTree", "SnapTree", '*', '#377339'),
-                                 #("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_" + "se.uu.collection.LockFreeRangeCollectorSkipList", "ChatterjeeSL", '+', '#d67724'),
-                                 ("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_" + "se.uu.collection.NonAtomicRangeUpdateConcurrentSkipListMap", "NonAtomicSL", 'p', '#B971D1'),
-                                 ("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_" + "se.uu.collection.ImmTreapCoarseMap", "Im-Tr-Coarse", 'x', '#B0B0B0'),
-                                 ("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_" + "se.uu.collection.ImmTreapCATreeMapSTDR", "CA tree (Locks)", '<', '#666699'),
-                                 ("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_" + "se.uu.collection.LockFreeImmTreapCATreeMapSTDR", "LFCA tree", '*', '#000000')
+                                 #("./no@threads"+str(nr_of_threads)+"_" + str(set_size) +"_se.uu.collection.KiWiRangeQueryMap", "KiWi", 'o', '#C96565'),
+                                 ("./no@threads"+str(nr_of_threads)+"_" + str(set_size) +"_algorithms.published.LockFreeKSTRQ", "k-ary", 'd', '#00BD06'),
+                                 ("./no@threads"+str(nr_of_threads)+"_" + str(set_size) +"_se.uu.collection.RangeUpdateSnapTree", "SnapTree", '*', '#377339'),
+                                 #("./no@threads"+str(nr_of_threads)+"_" + str(set_size) +"_se.uu.collection.LockFreeRangeCollectorSkipList", "ChatterjeeSL", '+', '#d67724'),
+                                 ("./no@threads"+str(nr_of_threads)+"_" + str(set_size) +"_se.uu.collection.NonAtomicRangeUpdateConcurrentSkipListMap", "NonAtomicSL", 'p', '#B971D1'),
+                                 ("./no@threads"+str(nr_of_threads)+"_" + str(set_size) +"_se.uu.collection.ImmTreapCoarseMap", "Im-Tr-Coarse", 'x', '#B0B0B0'),
+                                 ("./no@threads"+str(nr_of_threads)+"_" + str(set_size) +"_se.uu.collection.ImmTreapCATreeMapSTDR", "CA tree (Locks)", '<', '#666699'),
+                                 ("./no@threads"+str(nr_of_threads)+"_" + str(set_size) +"_se.uu.collection.LockFreeImmTreapCATreeMapSTDR", "LFCA tree", '*', '#000000')
         ]
         yaxis_max = 0
-        print("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_range")
-        draw_graph("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_range",
-                   graph_title = "no@3@10@3@10@ALL@1000000@500000@@"+str(range_query_max_size)+"_range",
-                   legend = showLegend,
+        draw_graph("./no@threads"+str(nr_of_threads)+"_" + str(set_size) +"_put",
+                   graph_title = "./no@threads"+str(nr_of_threads),
+                   legend = False,#(weight_range == 0 and graph == "live")
                    yaxis_max = yaxis_max,
-                   append_to_column = 1,
-                   range_size = range_query_max_size,
-                   left_adjust = 0.0,
-                   fig_width=3.1,
-                   xlabel = 'Number of Range Query Threads',
-                   ylabel = "(operations/μs) * 32000")
-        showLegend =True
-        draw_graph("no@3@10@3@10@ALL@"+str(set_size)+"@"+str(int(set_size/2))+ "@"+str(range_query_max_size)+"_put",
-                   graph_title = "no@3@10@3@10@ALL@1000000@500000@@"+str(range_query_max_size)+"_put",
-                   legend = showLegend,
-                   yaxis_max = yaxis_max,
-                   append_to_column = 0,
                    left_adjust = 0,
                    fig_width=2.9,
-                   xlabel = 'Number of Update Threads',
                    ylabel = "operations/μs")
+        draw_graph("./no@threads"+str(nr_of_threads)+"_" + str(set_size) +"_range",
+                   graph_title = "./no@threads"+str(nr_of_threads),
+                   legend = True,#(weight_range == 0 and graph == "live")
+                   yaxis_max = yaxis_max,
+                   append_to_column = 1,
+                   left_adjust = 0.0,
+                   fig_width=3.1,
+                   ylabel = "(operations/μs) * (range size)")
+
