@@ -32,7 +32,7 @@ of benchmarks that are briefly described below. A detailed description
 of these benchmarks can be found in the [LFCA tree paper][1]
 ([preprint][2]).
 
-## Mixed Operations
+### Mixed Operations
 
 In the mixed operations benchmark a configurable number of threads
 perform a configurable mix of operations.
@@ -40,7 +40,7 @@ perform a configurable mix of operations.
 More information about this benchmark can be found in
 [benchmark_tools/MIX_OPS_BENCH_README.md][3].
 
-## Separate Threads For Updates and Range Queries
+### Separate Threads For Updates and Range Queries
 
 In this benchmark half of the threads do update operations
 (put and remove) while the other half only do range queries.
@@ -48,7 +48,7 @@ In this benchmark half of the threads do update operations
 More information about this benchmark can be found in   
 [benchmark_tools/SEP_THREADS_BENCH_README.md][4].
 
-## Time Series Benchmark For the LFCA Tree
+### Time Series Benchmark For the LFCA Tree
 
 Currently, this benchmark can only be used for the LFCA tree. The
 intention of this benchmark is to produce a time series showing how
@@ -135,6 +135,35 @@ search trees. In Principles of Distributed Systems: 16th International
 Conference, OPODIS 2012.
 
 Code located in: src/main/java/algorithms/published/LockFreeKSTRQ.java
+
+**Data structures not included**
+
+The following data structures are not included in this repository for
+licensing reasons but have been used in this benchmark framework
+previously ([see][1]).
+
+**KiWi** - A lock-free data structure with range query support
+
+Publication:
+
+Dmitry Basin, Edward Bortnikov, Anastasia Braginsky, Guy Golan-Gueta,
+Eshcar Hillel, Idit Keidar, and Moshe Sulamy. KiWi: A Key-Value
+Map for Scalable Real-Time Analytics. In Proceedings of the 22Nd ACM
+SIGPLAN Symposium on Principles and Practice of Parallel Programming
+(PPoPP ’17).
+
+Java source code for the KiWi is available
+[here](https://github.com/Eshcar/KiWi). The KiWi's source code is not
+included in this repository as it does not have any license.
+
+**ChatterjeeSL** - A general method for creating data structures with
+  range query support applied to a lock-free skip list
+
+Publication:
+
+Bapi Chatterjee. 2017.  Lock-free Linearizable 1-Dimensional Range
+Queries.  In Proceedings of the 18th International Conference on
+Distributed Computing and Networking (ICDCN ’17).
 
 License
 -------
